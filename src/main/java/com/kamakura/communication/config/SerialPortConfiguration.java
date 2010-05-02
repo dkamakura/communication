@@ -5,12 +5,12 @@
  */
 package com.kamakura.communication.config;
 
+import gnu.io.CommPortIdentifier;
+import gnu.io.SerialPort;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import javax.comm.CommPortIdentifier;
-import javax.comm.SerialPort;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.log4j.Logger;

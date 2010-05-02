@@ -8,10 +8,9 @@ package com.kamakura.communication.config;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import gnu.io.SerialPort;
 
 import java.util.List;
-
-import javax.comm.SerialPort;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,11 @@
 package com.kamakura.communication.session.impl;
 
+import gnu.io.CommPortIdentifier;
+import gnu.io.NoSuchPortException;
+import gnu.io.PortInUseException;
+import gnu.io.SerialPort;
+import gnu.io.UnsupportedCommOperationException;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -7,12 +13,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
-
-import javax.comm.CommPortIdentifier;
-import javax.comm.NoSuchPortException;
-import javax.comm.PortInUseException;
-import javax.comm.SerialPort;
-import javax.comm.UnsupportedCommOperationException;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,5 +93,11 @@ public class SerialPortSessionFactoryImpl implements SerialPortSessionFactory {
 
   public void setSerialPortConfiguration(SerialPortConfiguration serialPortConfiguration) {
     this.serialPortConfiguration = serialPortConfiguration;
+  }
+  
+  public static void main(String[] args) {
+    SerialPortSessionFactoryImpl serialPortSessionFactory = new SerialPortSessionFactoryImpl();
+    serialPortSessionFactory.setSerialPortConfiguration((new SerialPortConfiguration()).setPortName("/dev/ttyUSB0"));
+    serialPortSessionFactory.openSession();
   }
 }
