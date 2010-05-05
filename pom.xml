@@ -5,6 +5,9 @@
 	<artifactId>communication</artifactId>
 	<name>Communication</name>
 	<version>1.0</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<build>
 		<plugins>
 			<plugin>
@@ -26,7 +29,8 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.outputDirectory}</outputDirectory>
+							<outputDirectory>${project.build.outputDirectory}
+									</outputDirectory>
 							<resources>
 								<resource>
 									<directory>src/main/${build.type}</directory>
@@ -56,7 +60,8 @@
 									<type>jar</type>
 									<classifier>${build.type}</classifier>
 									<overWrite>true</overWrite>
-									<outputDirectory>${project.build.directory}/native</outputDirectory>
+									<outputDirectory>${project.build.directory}/native
+									</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>
@@ -67,7 +72,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<argLine>-Djava.library.path=${project.build.directory}/native</argLine>
+					<argLine>-Djava.library.path=${project.build.directory}/native
+					</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -146,7 +152,9 @@
 		<profile>
 			<id>linux</id>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<os>
+					<family>Unix</family>
+				</os>
 			</activation>
 			<properties>
 				<build.type>linux</build.type>
@@ -154,6 +162,11 @@
 		</profile>
 		<profile>
 			<id>windows</id>
+			<activation>
+				<os>
+					<family>Windows</family>
+				</os>
+			</activation>
 			<properties>
 				<build.type>windows</build.type>
 			</properties>

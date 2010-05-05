@@ -6,8 +6,8 @@
 package com.kamakura.communication.config;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import gnu.io.SerialPort;
 
 import java.util.List;
@@ -31,7 +31,7 @@ public class SerialPortConfigurationTest extends BaseSpringTestCase {
 	@Test
 	public void testDefaultSerialPortConfiguration() {
 		assertNotNull(serialPortConfiguration);
-		assertEquals("/dev/ttyUSB0", serialPortConfiguration.getPortName());
+		assertNotNull(serialPortConfiguration.getPortName());
 		assertEquals(new Integer(15000), serialPortConfiguration.getReadTimeout());
 		assertEquals(new Integer(15000), serialPortConfiguration.getReceiveTimeout());
 		assertEquals(new Integer(9600), serialPortConfiguration.getBaudRate());
@@ -44,9 +44,9 @@ public class SerialPortConfigurationTest extends BaseSpringTestCase {
 
 	@Test
 	public void testAvailableDevices() {
-		List<String> availableDevices = serialPortConfiguration.getAvailableDevices();
+		List<String> availableDevices = serialPortConfiguration.listAvailableDevices();
 		assertNotNull(availableDevices);
-		assertTrue(availableDevices.contains("/dev/ttyUSB0"));
+		assertFalse(availableDevices.isEmpty());
 	}
 
 	@Test
@@ -69,7 +69,7 @@ public class SerialPortConfigurationTest extends BaseSpringTestCase {
 	@DirtiesContext
 	public void testSerialPortConfigurationReinjection() {
 		assertNotNull(serialPortConfiguration);
-		assertEquals("/dev/ttyUSB0", serialPortConfiguration.getPortName());
+		assertNotNull(serialPortConfiguration.getPortName());
 		assertEquals(new Integer(15000), serialPortConfiguration.getReadTimeout());
 		assertEquals(new Integer(15000), serialPortConfiguration.getReceiveTimeout());
 		assertEquals(new Integer(9600), serialPortConfiguration.getBaudRate());
@@ -97,7 +97,9 @@ public class SerialPortConfigurationTest extends BaseSpringTestCase {
 	}
 	
 	@Test
+	@DirtiesContext
 	public void testToString() {
-		assertEquals("{readTimeout=15000, parity=0, stopBits=1, dataBits=8, flowControlIn=0, baudRate=9600, receiveTimeout=15000, class=class com.kamakura.communication.config.SerialPortConfiguration, flowControlOut=0, availableDevices=/dev/ttyUSB0, portName=/dev/ttyUSB0}", serialPortConfiguration.toString());
+		List<String> availableDevices = serialPortConfiguration.listAvailableDevices();
+		assertEquals("{readTimeout=15000, parity=0, stopBits=1, dataBits=8, flowControlIn=0, baudRate=9600, receiveTimeout=15000, class=class com.kamakura.communication.config.SerialPortConfiguration, flowControlOut=0, portName=" + availableDevices.get(0) + "}", serialPortConfiguration.toString());
 	}
 }
