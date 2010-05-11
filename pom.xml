@@ -144,7 +144,15 @@
 			<artifactId>rxtx-native</artifactId>
 			<version>2.1.7</version>
 			<type>jar</type>
-			<classifier>${build.type}</classifier>
+			<classifier>linux</classifier>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.rxtx</groupId>
+			<artifactId>rxtx-native</artifactId>
+			<version>2.1.7</version>
+			<type>jar</type>
+			<classifier>windows</classifier>
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
@@ -159,16 +167,6 @@
 			<properties>
 				<build.type>linux</build.type>
 			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-jar-plugin</artifactId>
-						<configuration>
-							<classifier>linux</classifier>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 		<profile>
 			<id>windows</id>
@@ -180,16 +178,6 @@
 			<properties>
 				<build.type>windows</build.type>
 			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<artifactId>maven-jar-plugin</artifactId>
-						<configuration>
-							<classifier>windows</classifier>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
 		</profile>
 	</profiles>
 </project>

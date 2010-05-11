@@ -10,16 +10,20 @@ import static org.junit.Assert.assertEquals;
 import java.util.Locale;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kamakura.communication.i18n.MessageResourceUtil;
-import com.kamakura.communication.test.BaseSpringTestCase;
 
 /**
  * @author Daniel de Aguiar Kamakura
  *
  * @since 1.0
  */
-public class SerialPortExceptionTest extends BaseSpringTestCase {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/spring/*.xml"})
+public class SerialPortExceptionTest {
   @Test
   public void testLocalizedMessagePtBR() {
     MessageResourceUtil.setLocale(new Locale("pt", "BR"));

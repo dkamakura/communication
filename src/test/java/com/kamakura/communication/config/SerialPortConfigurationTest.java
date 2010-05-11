@@ -13,20 +13,27 @@ import gnu.io.SerialPort;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.annotation.DirtiesContext;
-
-import com.kamakura.communication.test.BaseSpringTestCase;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * @author Daniel de Aguiar Kamakura
  *
  * @since 1.0
  */
-public class SerialPortConfigurationTest extends BaseSpringTestCase {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/spring/*.xml"})
+public class SerialPortConfigurationTest {
 
 	@Autowired
-	SerialPortConfiguration serialPortConfiguration;
+	private ApplicationContext applicationContext;
+	
+	@Autowired
+	private SerialPortConfiguration serialPortConfiguration;
 	
 	@Test
 	public void testDefaultSerialPortConfiguration() {
