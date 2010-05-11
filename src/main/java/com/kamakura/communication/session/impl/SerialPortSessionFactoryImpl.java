@@ -90,14 +90,4 @@ public class SerialPortSessionFactoryImpl implements SerialPortSessionFactory {
     }
     logger.debug("Session closed");
   }
-
-  public void setSerialPortConfiguration(SerialPortConfiguration serialPortConfiguration) {
-    this.serialPortConfiguration = serialPortConfiguration;
-  }
-  
-  public static void main(String[] args) {
-    SerialPortSessionFactoryImpl serialPortSessionFactory = new SerialPortSessionFactoryImpl();
-    serialPortSessionFactory.setSerialPortConfiguration((new SerialPortConfiguration()).setPortName("/dev/ttyUSB0"));
-    serialPortSessionFactory.openSession();
-  }
 }
