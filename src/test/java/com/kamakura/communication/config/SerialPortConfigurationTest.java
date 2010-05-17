@@ -50,10 +50,10 @@ public class SerialPortConfigurationTest {
 	}
 
 	@Test
-	public void testAvailableDevices() {
-		List<String> availableDevices = serialPortConfiguration.listAvailableDevices();
-		assertNotNull(availableDevices);
-		assertFalse(availableDevices.isEmpty());
+	public void testListAvailableSerialPorts() {
+		List<String> availableSerialPorts = serialPortConfiguration.listAvailableSerialPorts();
+		assertNotNull(availableSerialPorts);
+		assertFalse(availableSerialPorts.isEmpty());
 	}
 
 	@Test
@@ -106,7 +106,7 @@ public class SerialPortConfigurationTest {
 	@Test
 	@DirtiesContext
 	public void testToString() {
-		List<String> availableDevices = serialPortConfiguration.listAvailableDevices();
+		List<String> availableDevices = serialPortConfiguration.listAvailableSerialPorts();
 		assertEquals("{readTimeout=15000, parity=0, stopBits=1, dataBits=8, flowControlIn=0, baudRate=9600, receiveTimeout=15000, class=class com.kamakura.communication.config.SerialPortConfiguration, flowControlOut=0, portName=" + availableDevices.get(0) + "}", serialPortConfiguration.toString());
 	}
 }

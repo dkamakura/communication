@@ -42,7 +42,7 @@ public class SerialPortConfiguration {
 	 */
 	public SerialPortConfiguration() {
 		this("", 15000, 15000, 9600, SerialPort.FLOWCONTROL_NONE, SerialPort.FLOWCONTROL_NONE, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-		if(!this.listAvailableDevices().isEmpty()) {
+		if(!this.listAvailableSerialPorts().isEmpty()) {
 			this.setPortName(this.availableSerialPorts.get(0));
 		}
 	}
@@ -121,10 +121,10 @@ public class SerialPortConfiguration {
 	}
 
 	/**
-	 * This method returns a list with all available device names
+	 * This method returns a list with all available serial ports names
 	 * @return
 	 */
-	public List<String> listAvailableDevices() {
+	public List<String> listAvailableSerialPorts() {
 		@SuppressWarnings("unchecked")
 		List<CommPortIdentifier> availableDevices = Collections.list(CommPortIdentifier.getPortIdentifiers());
 		
