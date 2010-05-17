@@ -35,15 +35,15 @@ public class SerialPortConfiguration {
 	private Integer stopBits;
 	private Integer parity;
 
-	private List<String> availableSerialPorts = new ArrayList<String>();
-
 	/**
 	 * Default constructor. Set parameters to no port, 9600 baud rate, none flowControlIn, none flowControlOut, 8 data bit, 1 stop bit, none parity. 
 	 */
 	public SerialPortConfiguration() {
 		this("", 15000, 15000, 9600, SerialPort.FLOWCONTROL_NONE, SerialPort.FLOWCONTROL_NONE, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
-		if(!this.listAvailableSerialPorts().isEmpty()) {
-			this.setPortName(this.availableSerialPorts.get(0));
+		List<String> availableSerialPorts = this.listAvailableSerialPorts();
+
+		if(!availableSerialPorts.isEmpty()) {
+			this.setPortName(availableSerialPorts.get(0));
 		}
 	}
 	
@@ -125,6 +125,8 @@ public class SerialPortConfiguration {
 	 * @return
 	 */
 	public List<String> listAvailableSerialPorts() {
+		List<String> availableSerialPorts = new ArrayList<String>();
+
 		@SuppressWarnings("unchecked")
 		List<CommPortIdentifier> availableDevices = Collections.list(CommPortIdentifier.getPortIdentifiers());
 		
