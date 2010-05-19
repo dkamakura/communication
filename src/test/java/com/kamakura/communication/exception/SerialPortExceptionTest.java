@@ -34,8 +34,6 @@ public class SerialPortExceptionTest {
       assertEquals("Erro do Teste de Localização.", ex.getLocalizedMessage());
       assertEquals("error.localized.test", ex.getMessage());
     }
-    
-    MessageResourceUtil.removeLocale();
   }
 
   @Test
@@ -48,8 +46,6 @@ public class SerialPortExceptionTest {
       assertEquals("Error Localized Test.", ex.getLocalizedMessage());
       assertEquals("error.localized.test", ex.getMessage());
     }
-    
-    MessageResourceUtil.removeLocale();
   }
 
   @Test
@@ -62,7 +58,6 @@ public class SerialPortExceptionTest {
       assertEquals("Erro do Teste de Localização Parametrizado.", ex.getLocalizedMessage());
       assertEquals("error.parameterized.localized.test", ex.getMessage());
     }
-    MessageResourceUtil.removeLocale();
   }
 
   @Test
@@ -75,6 +70,5 @@ public class SerialPortExceptionTest {
       assertEquals("Error Parameterized Localized Test.", ex.getLocalizedMessage());
       assertEquals("error.parameterized.localized.test", ex.getMessage());
     }
-    MessageResourceUtil.removeLocale();
   }
 }

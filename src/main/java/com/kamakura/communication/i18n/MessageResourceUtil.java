@@ -20,8 +20,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageResourceUtil {
 
-  private static ThreadLocal<Locale> threadLocalLocale = new ThreadLocal<Locale>();
-  
   private static ResourceBundleMessageSource messageSource; 
 
   @Autowired(required=true)
@@ -30,15 +28,11 @@ public class MessageResourceUtil {
   }
 
   public static void setLocale(Locale locale) {
-    threadLocalLocale.set(locale);
+    Locale.setDefault(locale);
   }
 
   private static Locale getLocale() {
-    Locale locale = threadLocalLocale.get();
-    if(locale == null) {
-      locale = Locale.getDefault();
-    }
-    return locale;
+    return Locale.getDefault();
   }
   
   public static String getMessage(String message) {
@@ -49,7 +43,4 @@ public class MessageResourceUtil {
     return messageSource.getMessage(message, params, getLocale());
   }
   
-  public static void removeLocale() {
-    threadLocalLocale.remove();
-  }
 }
