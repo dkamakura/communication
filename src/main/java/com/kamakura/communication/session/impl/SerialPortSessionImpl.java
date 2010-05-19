@@ -11,6 +11,7 @@ import java.io.Writer;
 
 import org.apache.log4j.Logger;
 
+import com.kamakura.communication.exception.SerialPortException;
 import com.kamakura.communication.session.SerialPortSession;
 
 /**
@@ -46,7 +47,7 @@ public class SerialPortSessionImpl implements SerialPortSession {
         builder.append(data);
       }
     } catch (IOException ex) {
-      throw new RuntimeException("error.reading.data", ex);
+      throw new SerialPortException("error.reading.data", ex);
     }
     logger.debug("Finished reading data.");
     return builder.toString();
@@ -64,7 +65,7 @@ public class SerialPortSessionImpl implements SerialPortSession {
       out.write(data);
       out.flush();
     } catch (IOException ex) {
-      throw new RuntimeException("error.writing.data", ex);
+      throw new SerialPortException("error.writing.data", ex);
     }
     logger.debug("Finished writing data.");
   }

@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.kamakura.communication.config.SerialPortConfiguration;
+import com.kamakura.communication.exception.SerialPortException;
 import com.kamakura.communication.session.SerialPortSession;
 import com.kamakura.communication.session.SerialPortSessionFactory;
 
@@ -55,13 +56,13 @@ public class SerialPortSessionFactoryImpl implements SerialPortSessionFactory {
       in = new BufferedReader(new InputStreamReader(serialPort.getInputStream()));
       out = new BufferedWriter(new OutputStreamWriter(serialPort.getOutputStream()));
     } catch (NoSuchPortException ex) {
-      throw new RuntimeException("error.opening.serial.port", ex);
+      throw new SerialPortException("error.opening.serial.port", ex);
     } catch (PortInUseException ex) {
-      throw new RuntimeException("error.serial.port.in.use", ex);
+      throw new SerialPortException("error.serial.port.in.use", ex);
     } catch (UnsupportedCommOperationException ex) {
-      throw new RuntimeException("error.configuring.serial.port", ex);
+      throw new SerialPortException("error.configuring.serial.port", ex);
     } catch (IOException exception) {
-      throw new RuntimeException("error.opening.streams", exception);
+      throw new SerialPortException("error.opening.streams", exception);
     }
 
     logger.debug("Session open");
