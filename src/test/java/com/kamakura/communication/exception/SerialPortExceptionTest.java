@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.kamakura.communication.i18n.MessageResourceUtil;
+import com.kamakura.communication.i18n.MessageSourceUtil;
 
 /**
  * @author Daniel de Aguiar Kamakura
@@ -26,7 +26,7 @@ import com.kamakura.communication.i18n.MessageResourceUtil;
 public class SerialPortExceptionTest {
   @Test
   public void testLocalizedMessagePtBR() {
-    MessageResourceUtil.setLocale(new Locale("pt", "BR"));
+    MessageSourceUtil.setLocale(new Locale("pt", "BR"));
 
     try {
       throw new SerialPortException("error.localized.test");
@@ -38,7 +38,7 @@ public class SerialPortExceptionTest {
 
   @Test
   public void testLocalizedMessageEn() {
-    MessageResourceUtil.setLocale(new Locale("en"));
+    MessageSourceUtil.setLocale(new Locale("en"));
 
     try {
       throw new SerialPortException("error.localized.test");
@@ -50,7 +50,7 @@ public class SerialPortExceptionTest {
 
   @Test
   public void testParameterizedLocalizedMessagePtBR() {
-    MessageResourceUtil.setLocale(new Locale("pt", "BR"));
+    MessageSourceUtil.setLocale(new Locale("pt", "BR"));
     try {
       Object[] params = {"Parametrizado"};
       throw new SerialPortException("error.parameterized.localized.test", params);
@@ -62,7 +62,7 @@ public class SerialPortExceptionTest {
 
   @Test
   public void testParameterizedLocalizedMessageEn() {
-    MessageResourceUtil.setLocale(new Locale("en"));
+    MessageSourceUtil.setLocale(new Locale("en"));
     try {
       Object[] params = {"Parameterized"};
       throw new SerialPortException("error.parameterized.localized.test", params);
