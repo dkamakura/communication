@@ -1,5 +1,5 @@
 /**
- * MessageResourceUtilTest.java
+ * MessageSourceUtilTest.java
  *
  * Copyright 2010-2010 Daniel de Aguiar Kamakura
  */
@@ -21,13 +21,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/spring/*.xml"})
-public class MessageResourceUtilTest {
+public class MessageSourceUtilTest {
   @Test
   public void testGetMessage() {
-    MessageResourceUtil.setLocale(new Locale("pt", "BR"));
-    assertEquals("Erro do Teste de Localização.", MessageResourceUtil.getMessage("error.localized.test"));
+    MessageSourceUtil.setLocale(new Locale("pt", "BR"));
+    assertEquals("Erro do Teste de Localização.", MessageSourceUtil.getMessage("error.localized.test"));
 
-    MessageResourceUtil.setLocale(new Locale("en"));
-    assertEquals("Error Localized Test.", MessageResourceUtil.getMessage("error.localized.test"));
+    MessageSourceUtil.setLocale(new Locale("en"));
+    assertEquals("Error Localized Test.", MessageSourceUtil.getMessage("error.localized.test"));
   }
 }

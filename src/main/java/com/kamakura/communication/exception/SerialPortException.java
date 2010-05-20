@@ -5,7 +5,7 @@
  */
 package com.kamakura.communication.exception;
 
-import com.kamakura.communication.i18n.MessageResourceUtil;
+import com.kamakura.communication.i18n.MessageSourceUtil;
 
 /**
  * @author Daniel de Aguiar Kamakura
@@ -40,6 +40,6 @@ public class SerialPortException extends RuntimeException {
 
   @Override
   public String getLocalizedMessage() {
-    return MessageResourceUtil.getMessage(this.getMessage(), params);
+    return MessageSourceUtil.getMessage(this.getMessage(), params);
   }
 }

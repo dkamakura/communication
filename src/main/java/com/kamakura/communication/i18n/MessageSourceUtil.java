@@ -1,5 +1,5 @@
 /**
- * MessageResourceUtil.java
+ * MessageSourceUtil.java
  *
  * Copyright 2010-2010 Daniel de Aguiar Kamakura
  */
@@ -18,13 +18,13 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class MessageResourceUtil {
+public class MessageSourceUtil {
 
   private static ResourceBundleMessageSource messageSource; 
 
   @Autowired(required=true)
   public void setMessageSource(ResourceBundleMessageSource messageSource) {
-    MessageResourceUtil.messageSource = messageSource;
+    MessageSourceUtil.messageSource = messageSource;
   }
 
   public static void setLocale(Locale locale) {
